@@ -25,6 +25,13 @@ class _QuizState extends State<Quiz> {
 
   var activeScreen = 'start-screen';
 
+  void restartQuiz() {
+    setState(() {
+      activeScreen = 'restart-screen';
+      selectedAnswers.clear();
+    });
+  }
+
   void switchScreen() {
     setState(() {
       activeScreen = 'questions-screen';
@@ -55,9 +62,15 @@ class _QuizState extends State<Quiz> {
     }
 
     if (activeScreen == 'results-screen') {
-      print(selectedAnswers);
       screenWidget = ResultScreen(
         chosenAnswers: selectedAnswers,
+        onRestart: restartQuiz,
+      );
+    }
+
+    if (activeScreen == 'restart-screen') {
+      screenWidget = QuestionScreen(
+        onSelectAnswer: chooseAnswer,
       );
     }
 
@@ -65,7 +78,7 @@ class _QuizState extends State<Quiz> {
       home: Scaffold(
           body: Container(
         decoration:
-            const BoxDecoration(color: Color.fromARGB(255, 168, 54, 230)),
+            const BoxDecoration(color: Color.fromARGB(255, 119, 7, 205)),
         child: screenWidget,
         // child: activeScreen == 'start-screen'
         //     ? StartScreen(switchScreen)

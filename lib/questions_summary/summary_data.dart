@@ -19,13 +19,19 @@ class SummaryData extends StatelessWidget {
         children: [
           Text(
             question,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 5,
           ),
-          Text(answer),
-          Text(correctAnswer),
+          Text(
+            answer,
+            style: const TextStyle(color: Color.fromARGB(255, 217, 155, 248)),
+          ),
+          Text(correctAnswer,
+              style:
+                  const TextStyle(color: Color.fromARGB(255, 153, 204, 246))),
         ],
       ),
     );

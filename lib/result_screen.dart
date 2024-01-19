@@ -1,13 +1,15 @@
 import 'package:adv_basics/data/questions.dart';
 import 'package:adv_basics/questions_summary/questions_summary.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key, required this.chosenAnswers});
+  const ResultScreen(
+      {super.key, required this.chosenAnswers, required this.onRestart});
 
   final List<String> chosenAnswers;
+
+  final void Function() onRestart;
 
 //MAP is a Key Value Pair really good for making data shapes and summary.
   List<Map<String, Object>> getSummaryData() {
@@ -57,7 +59,9 @@ class ResultScreen extends StatelessWidget {
             ),
             TextButton.icon(
               style: TextButton.styleFrom(foregroundColor: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                onRestart();
+              },
               label: const Text('Restart Quiz'),
               icon: const Icon(Icons.rotate_right),
             )

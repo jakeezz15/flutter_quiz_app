@@ -20,6 +20,7 @@ class QuestionsSummary extends StatelessWidget {
               return Container(
                 margin: const EdgeInsets.only(bottom: 5),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // margin: const EdgeInsets.only(left: 15, right: 15),
                     // alignment: Alignment.center,
